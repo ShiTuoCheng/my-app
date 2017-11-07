@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import pic_code from '../lib/pic_code.js';
 
 @Component({
 

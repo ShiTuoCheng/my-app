@@ -1,3 +1,4 @@
+import {ElementRef} from '@angular/core';
 export class Utilities {
 
     public static formatNum(num: number): string {
@@ -27,5 +28,9 @@ export class Utilities {
         } else if (day === 7) {
             return '日';
         }
+    }
+
+    public static log(msg?: any): void {
+        console.log.apply(console, <any>[msg]);
     }
 }

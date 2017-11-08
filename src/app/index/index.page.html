@@ -1,0 +1,89 @@
+<div class="if_wrap">
+    <div class="if_wrapper bdHeader">
+        <p>Test，欢迎您~</p>
+        <app-comm-weather></app-comm-weather>
+        <ul class="bhiFun">
+            <li class="ifHdCon" (click)="reloadPage()">
+                <i class="i_icon5-0"></i>
+                <span class="ihdcTxt">刷新</span>
+            </li>
+            <li class="ifHdCon" style="cursor: default;">
+                <i class="i_icon6-0"></i>
+                <app-comm-timer></app-comm-timer>
+            </li>
+            <li class="ifHdCon" *ngIf="dateClock" (click)="$state.go('memo')">
+                <i style="background:url('/images/memo.png') 0 0 no-repeat; width:25px; height: 25px; display:inline-block; vertical-align: middle; margin-right: 10px;"></i>
+                备忘
+            </li>
+            <li class="ifHdCon" (click)="signOut()">
+                <i class="i_icon7-0"></i>
+                <span class="ihdcTxt">退出登录</span>
+            </li>
+        </ul>
+    </div>
+    <div class="if_wrapper">
+        <nav class="if_nav">
+            <div class="if_nav_mainWrap" id="nav" style="overflow: auto;" appScrollDirective>
+                <ul class="nav_main">
+                    <li class="nmItem" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
+                        <div class="nmiSurfac">
+                            <i class="i_icon2-"></i>
+                            <font class="nmiTxt">{{m.navName}}</font>
+                            <span class="nmiArr" *ngIf="m.sub" [ngClass]="{'active': activeNav === m}">
+                            </span>
+                        </div>
+                        <ul class="nvmSub" *ngIf="activeNav === m" [@visibility]="visibility">
+                            <li class="nvmsItem" *ngFor="let s of m.sub" ng-click="$state.go(s.name, s.params); $event.stopPropagation()">
+                                {{s.subName}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="if_body">
+            <div class="if_wrap">
+                <table class="if_control" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="padding-left: 20px;">
+                            <table class="ifCtTabWrap" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="ifctwArrBox" ng-click="tabBarLeft()">
+                                        <span class="ifctwLast"></span>
+                                    </td>
+                                    <td class="ifctwTbWrap" tab-Bar>
+                                        <!-- <ul class="ifctwTabBox" ng-style="{'width': tabBoxWid}">
+                                            <li class="ifctwbTab" ng-repeat="i in tabList" ng-click="$state.go(i.href)" ng-animate="{enter: 'indexTabCreate', leave: 'indexTabClose'}"
+                                                ng-class="{'active': curTab === i}">
+                                                <font class="ifctwbtTxt">{{i.title}}{{i===curTab}}</font>
+                                                <i ng-class="{true: 'ifctwbtClose-ie', false: 'ifctwbtClose'}[isIE]" ng-click="tabBarT.close(i); $event.stopPropagation()">
+                                                </i>
+                                            </li>
+                                        </ul> -->
+                                    </td>
+                                    <td class="ifctwArrBox" ng-click="tabBarRight()" ng-click="moreTabSwitch = !moreTabSwitch">
+                                        <i class="ifctwNext"></i>
+                                        <!-- <ul class="tableList" ng-show="moreTabSwitch" ng-animate="{show: 'moreTabOn', hide: 'moreTabOff'}">
+                                            <li class="tableList_item" ng-repeat="moreTab in moreTab" ng-click="$state.go(moreTab.href); $event.stopPropagation()">
+                                                {{ moreTab.title }}</li>
+                                        </ul> -->
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="ifctwbTab" ng-click="tabCloseAll()">关闭全部</td>
+                        <td class="ifConSearch" (click)="searchShow(); $event.stopPropagation()">
+                            <i class="i_icon8"></i>
+                            <input class="ifcsSearch" type="text" placeholder="请输入搜索内容">
+                        </td>
+                    </tr>
+                </table>
+                <div class="if_main">
+                    <router-outlet class="if_view" name="indexChildView" [ngStyle]="{'height': viewMainHig}"></router-outlet>
+                    <div class="if_copyright">Copyright © 2017 TOPu.net All rights reserved.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<app-comm-search></app-comm-search>

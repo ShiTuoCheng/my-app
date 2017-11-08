@@ -11,8 +11,9 @@ import {
 } from './Component/TabControlBtn/tabControlBtn.component';
 import { UploadImgComponent } from './Component/UploadImg/uploadImg.component';
 import { LoginPageComponent } from './login/login.page';
-import { IndexPageComponent } from './index/index.page';
+import { IndexPageComponent, ArrayPipeComponent, SubPipeComponent } from './index/index.page';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollDirective } from '../app/Directive/scroll.directive';
 
 import { SearchService } from './Component/Search/search.component';
 import { SearchComponent } from './Component/Search/search.component';
@@ -45,7 +46,10 @@ import { RouterModule, Routes } from '@angular/router';
     UploadImgComponent,
     LoginPageComponent,
     IndexPageComponent,
-    SearchComponent
+    SearchComponent,
+    ArrayPipeComponent,
+    SubPipeComponent,
+    ScrollDirective
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ import { RouterModule, Routes } from '@angular/router';
   providers: [
     LoadingService,
     TabControlService,
-    SearchService
+    SearchService,
+    ArrayPipeComponent,
+    SubPipeComponent
   ],
   bootstrap: [AppComponent]
 })

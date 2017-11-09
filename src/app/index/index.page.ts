@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, AfterViewInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, Pipe, PipeTransform, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {SearchService} from '../Component/Search/search.component';
-import { Router, RoutesRecognized, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, RoutesRecognized, NavigationEnd, ActivatedRoute, Routes, RouterModule } from '@angular/router';
 import { animate, trigger, state, style, transition, keyframes } from '@angular/animations';
+import { CommHeaderComponent } from '../Component/Header/header.component';
 declare var jquery: any;
 declare var $: any;
 import 'rxjs/add/operator/filter';
@@ -14,33 +15,33 @@ interface NavData {
     navName: string;
 }
 
-@Pipe({ name: 'navFilter' })
-export class ArrayPipeComponent implements PipeTransform {
-    transform(value: any, ...args: any[]) {
-        const navArr = [];
-        value.forEach((e) => {
-            if (!(e instanceof Array)) {
-                navArr.push(e);
-            }
-        });
+// @Pipe({ name: 'navFilter' })
+// export class ArrayPipeComponent implements PipeTransform {
+//     transform(value: any, ...args: any[]) {
+//         const navArr = [];
+//         value.forEach((e) => {
+//             if (!(e instanceof Array)) {
+//                 navArr.push(e);
+//             }
+//         });
 
-        return navArr;
-    }
-}
+//         return navArr;
+//     }
+// }
 
-@Pipe({ name: 'subFilter' })
-export class SubPipeComponent implements PipeTransform {
-    transform(value: any, ...args: any[]) {
-        const newArr = [];
-        value.forEach((e) => {
-            if ((e instanceof Array)) {
-                newArr.push(e);
-            }
-        });
+// @Pipe({ name: 'subFilter' })
+// export class SubPipeComponent implements PipeTransform {
+//     transform(value: any, ...args: any[]) {
+//         const newArr = [];
+//         value.forEach((e) => {
+//             if ((e instanceof Array)) {
+//                 newArr.push(e);
+//             }
+//         });
 
-        return newArr;
-    }
-}
+//         return newArr;
+//     }
+// }
 
 @Component({
 
@@ -81,8 +82,7 @@ export class IndexPageComponent implements OnInit {
         private router: Router,
         private elementRef: ElementRef,
         private http: HttpClient,
-        private activatedRoute: ActivatedRoute,
-        private arrayPipe: ArrayPipeComponent
+        private activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
@@ -137,7 +137,11 @@ export class IndexPageComponent implements OnInit {
 
     navSlide(act?: any): void {
         this.activeNav = act;
-        // this.router.navigate(['/index', { outlets: { indexChildView: 'header' } }]);
+        if (act.href) {
+
+            const str = act.href;
+            this.router.navigate([str]);
+        }
     }
 
     private setStyle(): void {

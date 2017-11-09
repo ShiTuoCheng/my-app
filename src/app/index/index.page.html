@@ -26,12 +26,12 @@
             <div class="if_nav_mainWrap" id="nav" style="overflow: auto;" appScrollDirective>
                 <ul class="nav_main">
                     <li class="nmItem" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
-                        <div class="nmiSurfac">
-                            <i class="i_icon2-"></i>
-                            <font class="nmiTxt">{{m.navName}}</font>
-                            <span class="nmiArr" *ngIf="m.sub" [ngClass]="{'active': activeNav === m}">
-                            </span>
-                        </div>
+                                <div class="nmiSurfac">
+                                    <i class="i_icon2-"></i>
+                                    <font class="nmiTxt">{{m.navName}}</font>
+                                    <span class="nmiArr" *ngIf="m.sub" [ngClass]="{'active': activeNav === m}">
+                                    </span>
+                                </div>
                         <ul class="nvmSub" *ngIf="activeNav === m" [@visibility]="visibility">
                             <li class="nvmsItem" *ngFor="let s of m.sub" ng-click="$state.go(s.name, s.params); $event.stopPropagation()">
                                 {{s.subName}}
@@ -79,7 +79,9 @@
                     </tr>
                 </table>
                 <div class="if_main">
-                    <router-outlet class="if_view" name="indexChildView" [ngStyle]="{'height': viewMainHig}"></router-outlet>
+
+<base href="/">
+                    <router-outlet class="if_view" [ngStyle]="{'height': viewMainHig}"></router-outlet>
                     <div class="if_copyright">Copyright © 2017 TOPu.net All rights reserved.</div>
                 </div>
             </div>

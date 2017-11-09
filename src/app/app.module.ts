@@ -11,45 +11,27 @@ import {
 } from './Component/TabControlBtn/tabControlBtn.component';
 import { UploadImgComponent } from './Component/UploadImg/uploadImg.component';
 import { LoginPageComponent } from './login/login.page';
-import { IndexPageComponent, ArrayPipeComponent, SubPipeComponent } from './index/index.page';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScrollDirective } from '../app/Directive/scroll.directive';
 
-import { SearchService } from './Component/Search/search.component';
-import { SearchComponent } from './Component/Search/search.component';
+// import { SearchService } from './Component/Search/search.component';
+// import { SearchComponent } from './Component/Search/search.component';
 import { AppComponent } from './app.component';
-import { CommFooterComponent } from './Component/Footer/footer.component';
-import { CommHeaderComponent } from './Component/Header/header.component';
-import { WeatherComponent } from './Component/Weather/weather.component';
-import { TimeComponent } from './Component/Timer/time.component';
+// import { CommFooterComponent } from './Component/Footer/footer.component';
+// import { CommHeaderComponent } from './Component/Header/header.component';
+// import { WeatherComponent } from './Component/Weather/weather.component';
+// import { TimeComponent } from './Component/Timer/time.component';
 import { ROUNTES } from './app.routes';
 import { RouterModule, Routes } from '@angular/router';
-// export const ROUNTES: Routes = [
-//   {
-//     path: '', component: AppComponent
-//   },
-//   {
-//     path: 'login', component: LoginPageComponent
-//   }
-// ];
+
 @NgModule({
   declarations: [
     AppComponent,
-    CommFooterComponent,
-    CommHeaderComponent,
-    WeatherComponent,
-    TimeComponent,
     LoadingComponent,
     PageBackComponent,
     PageCloseComponent,
     PageCloseOrBackComponent,
     UploadImgComponent,
-    LoginPageComponent,
-    IndexPageComponent,
-    SearchComponent,
-    ArrayPipeComponent,
-    SubPipeComponent,
-    ScrollDirective
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,10 +42,7 @@ import { RouterModule, Routes } from '@angular/router';
   ],
   providers: [
     LoadingService,
-    TabControlService,
-    SearchService,
-    ArrayPipeComponent,
-    SubPipeComponent
+    TabControlService
   ],
   bootstrap: [AppComponent]
 })

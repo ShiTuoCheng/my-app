@@ -1,0 +1,238 @@
+/*
+    苏成闯
+    图标公共类
+*/
+
+.icon() {
+    .inline-block;
+    vertical-align: middle;
+}
+
+.min() {
+    margin-right: 20px;
+}
+.min2() {
+    margin-right: 10px;
+}
+
+@icon0Wid: 110px;
+@icon0Hig: 55px;
+.icon0() {
+    .f_bp(-42px -210px);
+
+    width: @icon0Wid; height: @icon0Hig;
+}
+
+.i_icon0 {
+    .icon0();
+}
+.i_icon0-cen {
+    .icon0();
+
+    position: absolute;
+    top: 50%; left: 50%;
+    margin-left: -@icon0Wid / 2; margin-top: -@icon0Hig / 2;
+}
+
+
+// icon1
+.icon1() {
+    .f_bp(-21px -363px);
+    .icon();
+
+    width: 29px; height: 29px;
+}
+
+.i_icon1 {
+    .icon1();
+}
+.i_icon1- {
+    .icon1();
+    .min();
+}
+
+
+// icon2
+.icon2() {
+    .f_bp(-80px -362px);
+    .icon();
+
+    width: 32px; height: 30px;
+}
+
+.i_icon2 {
+    .icon2();
+}
+.i_icon2- {
+    .icon2();
+    .min();
+}
+
+
+// icon3
+.icon3() {
+    .f_bp(-142px -363px);
+    .icon();
+
+    width: 29px; height: 29px;
+}
+
+.i_icon3 {
+    .icon3();
+}
+.i_icon3- {
+    .icon3();
+    .min();
+}
+
+
+// icon4
+.icon4() {
+    .f_bp(-142px -363px);
+    .icon();
+
+    width: 29px; height: 29px;
+}
+
+.i_icon4 {
+    .icon4();
+
+    margin-right: 10px;
+}
+
+
+// icon5
+.icon5() {
+    .icon();
+    .f_bp(-23px -418px);
+
+    width: 28px; height: 25px;
+}
+
+.i_icon5-0 {
+    .icon5();
+    .min2();
+}
+
+
+// icon6
+.icon6() {
+    .icon();
+    .f_bp(-85px -418px);
+
+    width: 25px; height: 25px;
+}
+
+.i_icon6-0 {
+    .icon6();
+    .min2();
+}
+
+
+// icon7
+.icon7() {
+    .icon();
+    .f_bp(-144px -417px);
+
+    width: 25px; height: 26px;
+}
+
+.i_icon7-0 {
+    .icon7();
+    .min2();
+}
+
+
+// icon8
+.icon8() {
+    .icon();
+    .f_bp(-143px -494px);
+
+    width: 17px; height: 17px;
+}
+
+.i_icon8 {
+    .icon8();
+}
+
+
+// icon8
+.icon9() {
+    .icon();
+
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    position: relative;
+
+    .line() {
+        @wid: 5px;
+        @hig: 1px;
+
+        content: '';
+        width: @wid; height: @hig;
+        position: absolute;
+        top: 50%; left: 50%;
+        margin-top: -@hig / 2; margin-left: -@wid / 2;
+    }
+
+    &:before {
+        .line();
+
+        .transform(rotate(45deg));
+    }
+    &:after {
+        .line();
+
+        .transform(rotate(-45deg));
+    }
+}
+.i_icon9-0() {
+    .icon9();
+
+    background: #E3E3E3;
+
+    &:after, &:before {
+        background: #fff;
+    }
+}
+.i_icon9-0-() {
+    .icon();
+    .f_bp(-81px -470px);
+
+    width: 13px; height: 13px;
+}
+.i_icon9-1() {
+    .icon9();
+
+    background: #fff;
+
+    &:after, &:before {
+        background: @mainColor;
+    }
+}
+.i_icon9-1-() {
+    .icon();
+    .f_bp(-100px -470px);
+
+    width: 13px; height: 13px;
+}
+
+.i-close {
+    .inline-block;
+    width: 20px; line-height: 20px;
+    border-radius: 50%;
+    background-color: @mainColor;
+    text-align: center;
+    color: #fff;
+}
+.i-close-img {
+    .i-close();
+    position: absolute;
+    top: 5px; right: 5px;
+    cursor: pointer;
+
+    &:hover {
+        color: @mainColor;
+        background-color: #fef9ed;
+    }
+}

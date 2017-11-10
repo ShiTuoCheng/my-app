@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, AfterViewInit, Pipe, PipeTransform, NgModule, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {SearchService} from '../Component/Search/search.component';
+import {SearchService} from '../../framework/Component/Search/search.component';
 import { Router, RoutesRecognized, NavigationEnd, ActivatedRoute, Routes, RouterModule } from '@angular/router';
 import { animate, trigger, state, style, transition, keyframes } from '@angular/animations';
-import { CommHeaderComponent } from '../Component/Header/header.component';
+import { CommHeaderComponent } from '../../framework/Component/Header/header.component';
+import { LoadingComponent, LoadingService } from '../../framework/Component/Loading/loading.component';
 declare var jquery: any;
 declare var $: any;
 import 'rxjs/add/operator/filter';
@@ -68,7 +69,7 @@ interface NavData {
     ]
 })
 
-export class IndexPageComponent implements OnInit {
+export class IndexPageComponent implements OnInit, AfterViewInit {
 
     private viewMainHig: number;
     private viewHig: number;
@@ -84,9 +85,14 @@ export class IndexPageComponent implements OnInit {
         private elementRef: ElementRef,
         private http: HttpClient,
         private activatedRoute: ActivatedRoute,
-        private zone: NgZone
+        private zone: NgZone,
+        private loadingService: LoadingService
     ) {
         this.router.events.subscribe((url: any) => {});
+    }
+
+    ngAfterViewInit() {
+        this.loadingService.show.emit(null);
     }
 
     ngOnInit() {
@@ -138,10 +144,6 @@ export class IndexPageComponent implements OnInit {
     }
 
     reloadPage() {
-        // this.zone.runOutsideAngular(() => {
-        //     location.reload();
-        // });
-        // console.log(this.activatedRoute);
 
         this.url = this.router.url;
 

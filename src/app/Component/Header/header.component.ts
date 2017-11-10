@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService, LoadingComponent } from '../Loading/loading.component';
 import { HttpClient } from '@angular/common/http';
 
 class HeaderItem {
@@ -26,7 +27,7 @@ export class CommHeaderComponent implements OnInit {
     private headerItem: Header;
     private headerTitle = '自助建站';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private Loadingservice: LoadingService) {}
 
     ngOnInit() {
         this.getHeaderList();
@@ -34,10 +35,16 @@ export class CommHeaderComponent implements OnInit {
 
     private getHeaderList(): void {
 
+        this.Loadingservice.show.emit(null);
         this.http.get<Header>('http://localhost:3000/headers')
         .toPromise()
         .then((response) => {
             this.headerList = response.data;
-        }).catch(err => console.log(err));
+            this.Loadingservice.hide.emit(null);
+        }).catch((err) => {
+
+            this.Loadingservice.hide.emit(null);
+            console.log(err)
+        } );
     }
 }

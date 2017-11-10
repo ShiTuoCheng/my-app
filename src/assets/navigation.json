@@ -14,7 +14,10 @@
         {
             "navName": "导航栏3",
             "sub":[
-                {"subName": "子导航栏1"},
+                {
+                    "subName": "子导航栏1",
+                    "href": "/index/header"
+                },
                 {"subName": "子导航栏2"},
                 {"subName": "子导航栏3"},
                 {"subName": "子导航栏4"},
@@ -26,7 +29,8 @@
             ]
         },
         {
-            "navName": "导航栏4"
+            "navName": "导航栏4",
+            "href": "/index"
         },
         {
             "navName": "导航栏5",

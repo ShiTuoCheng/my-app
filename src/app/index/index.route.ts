@@ -10,6 +10,10 @@ import { CommFooterComponent } from '../Component/Footer/footer.component';
 import { CommHeaderComponent } from '../Component/Header/header.component';
 import { WeatherComponent } from '../Component/Weather/weather.component';
 import { TimeComponent } from '../Component/Timer/time.component';
+import {
+    LoadingComponent,
+    LoadingService
+} from '../Component/Loading/loading.component';
 
 export const ROUTES: Routes = [
     {
@@ -27,14 +31,19 @@ export const ROUTES: Routes = [
         CommHeaderComponent,
         WeatherComponent,
         TimeComponent,
-        SearchComponent
+        SearchComponent,
+        LoadingComponent
     ],
     imports: [
         CommonModule,
         RouterModule.forChild(ROUTES)
     ],
     providers: [
-        SearchService
+        SearchService,
+        LoadingService
+    ],
+    exports: [
+        LoadingComponent
     ]
 })
 export class SettingsModule { }

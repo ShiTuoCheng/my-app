@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, Pipe, PipeTransform, NgModule } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, Pipe, PipeTransform, NgModule, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {SearchService} from '../Component/Search/search.component';
 import { Router, RoutesRecognized, NavigationEnd, ActivatedRoute, Routes, RouterModule } from '@angular/router';
@@ -75,6 +75,7 @@ export class IndexPageComponent implements OnInit {
     private nav = [];
     private activeNav: any;
     private visibility;
+    private url: string;
     // page = '';
 
     constructor(
@@ -82,8 +83,11 @@ export class IndexPageComponent implements OnInit {
         private router: Router,
         private elementRef: ElementRef,
         private http: HttpClient,
-        private activatedRoute: ActivatedRoute
-    ) {}
+        private activatedRoute: ActivatedRoute,
+        private zone: NgZone
+    ) {
+        this.router.events.subscribe((url: any) => {});
+    }
 
     ngOnInit() {
         this.setStyle();
@@ -127,8 +131,24 @@ export class IndexPageComponent implements OnInit {
         //     });
     }
 
+    signOut() {
+        setTimeout(() => {
+            this.router.navigate(['/login'], { replaceUrl: true });
+        });
+    }
+
     reloadPage() {
-        window.location.reload();
+        // this.zone.runOutsideAngular(() => {
+        //     location.reload();
+        // });
+        // console.log(this.activatedRoute);
+
+        this.url = this.router.url;
+
+        this.router.navigate(['/11111'])
+            .then(() => {
+                this.router.navigate([this.url]);
+            });
     }
 
     searchShow() {
@@ -140,7 +160,15 @@ export class IndexPageComponent implements OnInit {
         if (act.href) {
 
             const str = act.href;
-            this.router.navigate([str]);
+            this.router.navigate([str], { replaceUrl: true });
+        }
+    }
+
+    subSlide(act?: any) {
+        if (act.href) {
+
+            const str = act.href;
+            this.router.navigate([str], { replaceUrl: true });
         }
     }
 

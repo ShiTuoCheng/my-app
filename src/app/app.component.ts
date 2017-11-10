@@ -7,13 +7,12 @@ import { LoadingService } from './Component/Loading/loading.component';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'app';
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.loadingService.show.emit(true);
+    // this.loadingService.show.emit(true);
   }
 }

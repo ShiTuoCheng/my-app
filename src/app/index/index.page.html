@@ -26,6 +26,7 @@
             <div class="if_nav_mainWrap" id="nav" style="overflow: auto;" appScrollDirective>
                 <ul class="nav_main">
                     <li class="nmItem" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
+
                                 <div class="nmiSurfac">
                                     <i class="i_icon2-"></i>
                                     <font class="nmiTxt">{{m.navName}}</font>
@@ -33,7 +34,7 @@
                                     </span>
                                 </div>
                         <ul class="nvmSub" *ngIf="activeNav === m" [@visibility]="visibility">
-                            <li class="nvmsItem" *ngFor="let s of m.sub" ng-click="$state.go(s.name, s.params); $event.stopPropagation()">
+                            <li class="nvmsItem" *ngFor="let s of m.sub" (click)="subSlide(s)">
                                 {{s.subName}}
                             </li>
                         </ul>
@@ -79,8 +80,6 @@
                     </tr>
                 </table>
                 <div class="if_main">
-
-<base href="/">
                     <router-outlet class="if_view" [ngStyle]="{'height': viewMainHig}"></router-outlet>
                     <div class="if_copyright">Copyright © 2017 TOPu.net All rights reserved.</div>
                 </div>
@@ -89,3 +88,4 @@
     </div>
 </div> 
 <app-comm-search></app-comm-search>
+<app-comm-loading></app-comm-loading>

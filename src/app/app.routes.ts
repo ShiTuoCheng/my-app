@@ -9,6 +9,9 @@ export const ROUNTES: Routes = [
         path: 'login', component: LoginPageComponent
     },
     {
-        path: '**', redirectTo: '/index'
+        path: '**', redirectTo: '/index', pathMatch: 'full'
+    },
+    {
+        path: '', redirectTo: '/index', pathMatch: 'full'
     }
 ];

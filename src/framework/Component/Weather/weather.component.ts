@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoadingService } from '../Loading/loading.component';
-import { Handler, Test } from '../../Utils/Handler';
+import { Handler, DataType } from '../../Utils/Handler';
 
 @Component({
 

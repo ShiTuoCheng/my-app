@@ -97,6 +97,7 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.setStyle();
+        this.initNavigation();
 
         $('.if_nav_mainWrap').height($(window).height() - $('.bdHeader').height());
         // 初始化
@@ -112,11 +113,6 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
         //             this.nav.push(subArr);
         //         }
         //     });
-        this.http.get<NavData>('../../assets/navigation.json')
-                 .toPromise()
-                 .then((res) => {
-                     this.nav = res.nav;
-                 });
         // this.router
         //     .events
         //     .filter(event => event instanceof NavigationEnd)
@@ -174,6 +170,14 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
         }
     }
 
+    private initNavigation() {
+        this.http.get<NavData>('../../assets/navigation.json')
+            .toPromise()
+            .then((res) => {
+                this.nav = res.nav;
+            });
+    }
+
     private setStyle(): void {
 
         this.viewMainHig = document.documentElement.clientHeight
@@ -185,5 +189,18 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     private choseDom(dom: string): any {
         const selectedDom = this.elementRef.nativeElement.querySelector(dom);
         return selectedDom;
+    }
+
+    private match(tar, id) {
+        let result;
+        tar.forEach((v?: any) => {
+            const identityMark = v.name.split('-');
+
+            if (identityMark.length === 1 && identityMark[0] === id) {
+                result = v;
+            }
+        });
+
+        return result;
     }
 }

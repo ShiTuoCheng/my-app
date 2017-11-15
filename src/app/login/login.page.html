@@ -3,16 +3,25 @@
     <div class="loginWrap__wrap loginBlock">
         <img src="../../assets/logo.png" alt="Logo" class="loginBlock__logo">
     
-        <form name="loginVerification" novalidate>
+        <form name="loginVerification" [formGroup]="loginForm">
+
             <div class="loginInputIconWrap liiw--username">
-                <input class="loginInput" type="text" name="username" placeholder="请输入用户名" [ngModel]="username" required>
+                <input class="loginInput" id="name" type="text" name="username" placeholder="请输入用户名" formControlName="name"
+                ([ngModel])="user.userName" required>
                 <span class="liiw__icon"></span>
+                <span *ngIf="isFieldValid('name')" class="help-block">*请输入用户名</span>
+
             </div>
+
             <div class="loginInputIconWrap liiw--password js-liiw--password loginInputIconWrap--mgn0">
-                <input class="loginInput" type="password" name="password" placeholder="请输入密码" [ngModel]="password" required>
+                <input class="loginInput" id="password" formControlName="password"
+                 type="password" name="password" placeholder="请输入密码" ([ngModel])="user.userPassword" required>
                 <span class="liiw__icon"></span>
+                <span *ngIf="isFieldValid('password')" class="help-block">*请输入密码</span>
+
             </div>
             <button class="loginBtn" (click)="loginSubmit()">登&emsp;录</button>
+
         </form>
     </div>
     

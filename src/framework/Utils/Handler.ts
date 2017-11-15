@@ -2,7 +2,7 @@ import { Injectable, OnInit, EventEmitter } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoadingService } from '../Component/Loading/loading.component';
 
-export interface Test {
+export interface DataType {
     [propName: string]: any;
 }
 
@@ -29,7 +29,7 @@ export class Handler implements HttpHandler, OnInit {
     ngOnInit() {
     }
 
-    public post (url: string, template: string): any {
+    public post (url: string, template: any): any {
 
         // 第一种实现方式
         return this.http
@@ -41,7 +41,7 @@ export class Handler implements HttpHandler, OnInit {
     }
     public get(url: string) {
 
-        return this.http.get<Test>(url)
+        return this.http.get<DataType>(url)
             .toPromise();
     }
 }

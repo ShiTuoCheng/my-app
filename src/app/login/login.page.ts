@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import pic_code from '../../framework/lib/pic_code.js';
+import pic_code from '@framework/lib/pic_code.js';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Handler } from '../../framework/Utils/Handler';
-import PromptLayer from '../../framework/lib/PromptLayer';
-
+import { Handler } from '@framework/Utils/Handler';
+import PromptLayer from '@framework/lib/PromptLayer';
 
 class UserInfo {
     userName?: string;
@@ -20,7 +19,7 @@ class UserInfo {
 export class LoginPageComponent implements OnInit, AfterViewInit {
 
     private loginForm: FormGroup;
-    private user: UserInfo;
+    user = new UserInfo();
 
     constructor(private formBuilder: FormBuilder, private handler: Handler) {}
 
@@ -37,15 +36,13 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
     loginSubmit() {
 
         // 生成二维码图片
-        // this.pic_codeHandler('https://www.angular.cn/generated/images/guide/cli-quickstart/app-works.png', null, null);
+        this.pic_codeHandler('https://www.angular.cn/generated/images/guide/cli-quickstart/app-works.png', null, null);
         this.loginForm.controls['name'].markAsTouched();
         this.loginForm.controls['password'].markAsTouched();
         if (this.loginForm.valid) {
             console.log('form submitted');
+            this.submitHandler();
         }
-        PromptLayer.show({
-            str: '登录失败请稍后重试'
-        });
     }
 
     isFieldValid(field: string) {
@@ -53,6 +50,7 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
     }
 
     private submitHandler(url?: string) {
+
         this.handler.post(url, {
             Aname: this.user.userName,
             Passwd: this.user.userPassword
@@ -63,8 +61,10 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
                 str: '登录失败请稍后重试'
             });
 
-            pic_code.refresh_pic();
+            // pic_code.refresh_pic();
         });
+
+        console.log(this.user);
     }
 
     private pic_codeHandler(getUrl, subUrl, fn) {
@@ -99,6 +99,8 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
                 }, 500);
             }
         });
+
+        pic_code.open();
     }
 
     private formCheck() {

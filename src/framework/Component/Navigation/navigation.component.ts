@@ -9,8 +9,6 @@ interface NavData {
     navName: string;
 }
 
-
-
 @Injectable()
 export class NavigationService {
     public navigationClick = new EventEmitter<any>();

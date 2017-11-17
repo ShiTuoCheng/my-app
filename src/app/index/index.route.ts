@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexPageComponent } from './index.page';
 
-import { SearchService } from '../../framework/Component/Search/search.component';
-import { SearchComponent } from '../../framework/Component/Search/search.component';
-import { AppComponent } from '../app.component';
-import { CommFooterComponent } from '../../framework/Component/Footer/footer.component';
-import { CommHeaderComponent } from '../../framework/Component/Header/header.component';
-import { WeatherComponent } from '../../framework/Component/Weather/weather.component';
-import { TimeComponent } from '../../framework/Component/Timer/time.component';
-import { NavigationComponent, NavigationService } from '../../framework/Component/Navigation/navigation.component';
+import { SearchService } from '@framework/Component/Search/search.component';
+import { SearchComponent } from '@framework/Component/Search/search.component';
+import { AppComponent } from '@app/app.component';
+import { CommFooterComponent } from '@framework/Component/Footer/footer.component';
+import { CommHeaderComponent } from '@framework/Component/Header/header.component';
+import { WeatherComponent } from '@framework/Component/Weather/weather.component';
+import { TimeComponent } from '@framework/Component/Timer/time.component';
+import { NavigationComponent, NavigationService } from '@framework/Component/Navigation/navigation.component';
 import {
     LoadingComponent,
     LoadingService
-} from '../../framework/Component/Loading/loading.component';
+} from '@framework/Component/Loading/loading.component';
 
 // export const ROUTES: Routes = ;
 

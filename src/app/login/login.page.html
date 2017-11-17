@@ -7,7 +7,7 @@
 
             <div class="loginInputIconWrap liiw--username">
                 <input class="loginInput" id="name" type="text" name="username" placeholder="请输入用户名" formControlName="name"
-                ([ngModel])="user.userName" required>
+                 [(ngModel)]="user.userName" required>
                 <span class="liiw__icon"></span>
                 <span *ngIf="isFieldValid('name')" class="help-block">*请输入用户名</span>
 
@@ -15,7 +15,7 @@
 
             <div class="loginInputIconWrap liiw--password js-liiw--password loginInputIconWrap--mgn0">
                 <input class="loginInput" id="password" formControlName="password"
-                 type="password" name="password" placeholder="请输入密码" ([ngModel])="user.userPassword" required>
+                 type="password" name="password" placeholder="请输入密码" [(ngModel)]="user.userPassword" required>
                 <span class="liiw__icon"></span>
                 <span *ngIf="isFieldValid('password')" class="help-block">*请输入密码</span>
 

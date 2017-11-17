@@ -1,15 +1,13 @@
 import { Component, ElementRef, OnInit, AfterViewInit, Pipe, PipeTransform, NgModule, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {SearchService} from '../../framework/Component/Search/search.component';
+import {SearchService} from '@framework/Component/Search/search.component';
 import { Router, RoutesRecognized, NavigationEnd, ActivatedRoute, Routes, RouterModule } from '@angular/router';
 import { animate, trigger, state, style, transition, keyframes } from '@angular/animations';
-import { CommHeaderComponent } from '../../framework/Component/Header/header.component';
-import { LoadingComponent, LoadingService } from '../../framework/Component/Loading/loading.component';
-import { NavigationService } from '../../framework/Component/Navigation/navigation.component';
+import { CommHeaderComponent } from '@framework/Component/Header/header.component';
+import { LoadingComponent, LoadingService } from '@framework/Component/Loading/loading.component';
+import { NavigationService } from '@framework/Component/Navigation/navigation.component';
 declare var jquery: any;
 declare var $: any;
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
 
 @Component({
 

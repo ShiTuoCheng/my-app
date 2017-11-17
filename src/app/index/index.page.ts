@@ -10,12 +10,6 @@ declare var $: any;
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
-interface NavData {
-
-    nav: Array<any>;
-    navName: string;
-}
-
 // @Pipe({ name: 'navFilter' })
 // export class ArrayPipeComponent implements PipeTransform {
 //     transform(value: any, ...args: any[]) {
@@ -73,9 +67,6 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     private viewMainHig: number;
     private viewHig: number;
-    private nav = [];
-    private activeNav: any;
-    private visibility;
     private url: string;
     // page = '';
 
@@ -97,7 +88,6 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.setStyle();
-        this.initNavigation();
 
         $('.if_nav_mainWrap').height($(window).height() - $('.bdHeader').height());
         // 初始化
@@ -151,31 +141,6 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     searchShow() {
         this.searchService.searchShow.emit(null);
-    }
-
-    navSlide(act?: any): void {
-        this.activeNav = act;
-        if (act.href) {
-
-            const str = act.href;
-            this.router.navigate([str], { replaceUrl: true });
-        }
-    }
-
-    subSlide(act?: any) {
-        if (act.href) {
-
-            const str = act.href;
-            this.router.navigate([str], { replaceUrl: true });
-        }
-    }
-
-    private initNavigation() {
-        this.http.get<NavData>('../../assets/navigation.json')
-            .toPromise()
-            .then((res) => {
-                this.nav = res.nav;
-            });
     }
 
     private setStyle(): void {

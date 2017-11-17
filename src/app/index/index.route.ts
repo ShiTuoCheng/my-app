@@ -10,20 +10,13 @@ import { CommFooterComponent } from '../../framework/Component/Footer/footer.com
 import { CommHeaderComponent } from '../../framework/Component/Header/header.component';
 import { WeatherComponent } from '../../framework/Component/Weather/weather.component';
 import { TimeComponent } from '../../framework/Component/Timer/time.component';
+import { NavigationComponent } from '../../framework/Component/Navigation/navigation.component';
 import {
     LoadingComponent,
     LoadingService
 } from '../../framework/Component/Loading/loading.component';
 
-export const ROUTES: Routes = [
-    {
-        path: '',
-        component: IndexPageComponent,
-        children: [
-            { path: 'header', component: CommHeaderComponent }
-        ]
-    }
-];
+// export const ROUTES: Routes = ;
 
 @NgModule({
     declarations: [
@@ -32,11 +25,20 @@ export const ROUTES: Routes = [
         WeatherComponent,
         TimeComponent,
         SearchComponent,
-        LoadingComponent
+        LoadingComponent,
+        NavigationComponent
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(ROUTES)
+        RouterModule.forChild([
+            {
+                path: '',
+                component: IndexPageComponent,
+                children: [
+                    { path: 'header', component: CommHeaderComponent }
+                ]
+            }
+        ])
     ],
     providers: [
         SearchService,

@@ -24,26 +24,9 @@
         </ul>
     </div>
     <div class="if_wrapper">
-        <nav class="if_nav">
-            <div class="if_nav_mainWrap" id="nav" style="overflow: auto;" appScrollDirective>
-                <ul class="nav_main">
-                    <li class="nmItem" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
-
-                                <div class="nmiSurfac">
-                                    <i class="i_icon2-"></i>
-                                    <font class="nmiTxt">{{m.navName}}</font>
-                                    <span class="nmiArr" *ngIf="m.sub" [ngClass]="{'active': activeNav === m}">
-                                    </span>
-                                </div>
-                        <ul class="nvmSub" *ngIf="activeNav === m" [@visibility]="visibility">
-                            <li class="nvmsItem" *ngFor="let s of m.sub" (click)="subSlide(s)">
-                                {{s.subName}}
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        
+        <app-nav-component></app-nav-component>
+        
         <div class="if_body">
             <div class="if_wrap">
                 <table class="if_control" cellpadding="0" cellspacing="0">
@@ -74,7 +57,7 @@
                                 </tr>
                             </table>
                         </td>
-                        <td class="ifctwbTab" ng-click="tabCloseAll()">关闭全部</td>
+                        <td class="ifctwbTab" (click)="tabCloseAll()">关闭全部</td>
                         <td class="ifConSearch" (click)="searchShow(); $event.stopPropagation()">
                             <i class="i_icon8"></i>
                             <input class="ifcsSearch" type="text" placeholder="请输入搜索内容">

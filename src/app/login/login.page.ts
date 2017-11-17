@@ -43,6 +43,9 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
         if (this.loginForm.valid) {
             console.log('form submitted');
         }
+        PromptLayer.show({
+            str: '登录失败请稍后重试'
+        });
     }
 
     isFieldValid(field: string) {
@@ -56,9 +59,9 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
         }).then(() => {
 
         }).catch(() => {
-            // PromptLayer.show({
-            //     str: '登录失败请稍后重试'
-            // });
+            PromptLayer.show({
+                str: '登录失败请稍后重试'
+            });
 
             pic_code.refresh_pic();
         });

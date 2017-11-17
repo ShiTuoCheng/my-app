@@ -229,4 +229,5 @@ var PromptLayer = {
 // } else
 //     PromptLayer.init();
 
-export default PromptLayer.init();
+PromptLayer.init();
+export default PromptLayer;

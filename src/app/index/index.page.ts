@@ -5,62 +5,16 @@ import { Router, RoutesRecognized, NavigationEnd, ActivatedRoute, Routes, Router
 import { animate, trigger, state, style, transition, keyframes } from '@angular/animations';
 import { CommHeaderComponent } from '../../framework/Component/Header/header.component';
 import { LoadingComponent, LoadingService } from '../../framework/Component/Loading/loading.component';
+import { NavigationService } from '../../framework/Component/Navigation/navigation.component';
 declare var jquery: any;
 declare var $: any;
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
-// @Pipe({ name: 'navFilter' })
-// export class ArrayPipeComponent implements PipeTransform {
-//     transform(value: any, ...args: any[]) {
-//         const navArr = [];
-//         value.forEach((e) => {
-//             if (!(e instanceof Array)) {
-//                 navArr.push(e);
-//             }
-//         });
-
-//         return navArr;
-//     }
-// }
-
-// @Pipe({ name: 'subFilter' })
-// export class SubPipeComponent implements PipeTransform {
-//     transform(value: any, ...args: any[]) {
-//         const newArr = [];
-//         value.forEach((e) => {
-//             if ((e instanceof Array)) {
-//                 newArr.push(e);
-//             }
-//         });
-
-//         return newArr;
-//     }
-// }
-
 @Component({
 
     selector: 'app-index-page',
-    templateUrl: './index.page.html',
-    animations: [
-        // trigger(
-        //     'visibility', [
-        //         state('shown', style({
-        //             height: '*'
-        //         })),
-        //         state('hidden', style({
-        //             height: 0
-        //         })),
-        //         transition('hidden => shown', [
-        //             animate('100ms ease-in-out')
-        //         ])
-        //     ]
-        // )
-        trigger('visibility', [
-            transition(':enter', [style({ height: 0, overflow: 'hidden' }), animate('.2s ease', style({ height: '*' }))]),
-            transition(':leave', [style({ height: '*', overflow: 'hidden' }), animate('.2s ease', style({ height: 0 }))])
-        ])
-    ]
+    templateUrl: './index.page.html'
 })
 
 export class IndexPageComponent implements OnInit, AfterViewInit {
@@ -68,7 +22,54 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     private viewMainHig: number;
     private viewHig: number;
     private url: string;
-    // page = '';
+    private fuck = [
+        {
+            'navName': '导航栏1',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' }
+            ]
+        },
+        {
+            'navName': '导航栏2',
+            'href': '/index/header'
+        },
+        {
+            'navName': '导航栏3',
+            'sub': [
+                {
+                    'subName': '子导航栏1',
+                    'href': '/index/header'
+                },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': '导航栏4',
+            'href': '/index'
+        },
+        {
+            'navName': '导航栏5',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        }
+    ];
 
     constructor(
         private searchService: SearchService,
@@ -77,7 +78,8 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
         private http: HttpClient,
         private activatedRoute: ActivatedRoute,
         private zone: NgZone,
-        private loadingService: LoadingService
+        private loadingService: LoadingService,
+        private navigationService: NavigationService
     ) {
         this.router.events.subscribe((url: any) => {});
     }
@@ -90,37 +92,11 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
         this.setStyle();
 
         $('.if_nav_mainWrap').height($(window).height() - $('.bdHeader').height());
-        // 初始化
-        // this.router.config
-        //     .filter((route) => route.data !== undefined)
-        //     .forEach((e, index) => {
-        //         this.nav.push(e.data.page);
-        //         const child = e.children,
-        //             subArr = [];
 
-        //         if (child !== undefined) {
-        //             child.forEach((e) => subArr.push(e.data.page));
-        //             this.nav.push(subArr);
-        //         }
-        //     });
-        // this.router
-        //     .events
-        //     .filter(event => event instanceof NavigationEnd)
-        //     .map(() => {
-        //         let child = this.activatedRoute.firstChild;
-        //         while (child) {
-        //             if (child.firstChild) {
-        //                 child = child.firstChild;
-        //             } else if (child.snapshot.data && child.snapshot.data['custom_data']) {
-        //                 return child.snapshot.data['custom_data'];
-        //             } else {
-        //                 return null;
-        //             }
-        //         }
-        //         return null;
-        //     }).subscribe((customData: any) => {
-        //         console.log(customData);
-        //     });
+        this.navigationService.navigationClick.subscribe((str?: any) => {
+
+            this.router.navigate([str], { replaceUrl: true });
+        });
     }
 
     signOut() {

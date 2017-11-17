@@ -10,7 +10,7 @@ import { CommFooterComponent } from '../../framework/Component/Footer/footer.com
 import { CommHeaderComponent } from '../../framework/Component/Header/header.component';
 import { WeatherComponent } from '../../framework/Component/Weather/weather.component';
 import { TimeComponent } from '../../framework/Component/Timer/time.component';
-import { NavigationComponent } from '../../framework/Component/Navigation/navigation.component';
+import { NavigationComponent, NavigationService } from '../../framework/Component/Navigation/navigation.component';
 import {
     LoadingComponent,
     LoadingService
@@ -42,7 +42,8 @@ import {
     ],
     providers: [
         SearchService,
-        LoadingService
+        LoadingService,
+        NavigationService
     ],
     exports: [
         LoadingComponent

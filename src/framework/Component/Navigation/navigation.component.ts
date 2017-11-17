@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { animate, trigger, state, style, transition, keyframes } from '@angular/animations';
 
 interface NavData {
 
@@ -8,21 +9,33 @@ interface NavData {
     navName: string;
 }
 
+
+
+@Injectable()
+export class NavigationService {
+    public navigationClick = new EventEmitter<any>();
+}
+
 @Component({
     selector: 'app-nav-component',
-    templateUrl: './navigation.component.html'
+    templateUrl: './navigation.component.html',
+    animations: [
+        trigger('visibility', [
+            transition(':enter', [style({ height: 0, overflow: 'hidden' }), animate('.2s ease', style({ height: '*' }))]),
+            transition(':leave', [style({ height: '*', overflow: 'hidden' }), animate('.2s ease', style({ height: 0 }))])
+        ])
+    ]
 })
 
 export class NavigationComponent implements OnInit {
 
-    private nav = [];
+    @Input() private nav = [];
     private activeNav: any;
     private visibility;
 
-    constructor(private router: Router, private http: HttpClient) {}
+    constructor(private router: Router, private http: HttpClient, private navigationService: NavigationService) {}
 
     ngOnInit() {
-        this.initNavigation();
     }
 
     navSlide(act?: any): void {
@@ -30,7 +43,7 @@ export class NavigationComponent implements OnInit {
         if (act.href) {
 
             const str = act.href;
-            this.router.navigate([str], { replaceUrl: true });
+            this.navigationService.navigationClick.emit(str);
         }
     }
 
@@ -38,15 +51,7 @@ export class NavigationComponent implements OnInit {
         if (act.href) {
 
             const str = act.href;
-            this.router.navigate([str], { replaceUrl: true });
+            this.navigationService.navigationClick.emit(str);
         }
-    }
-
-    private initNavigation() {
-        this.http.get<NavData>('../../assets/navigation.json')
-            .toPromise()
-            .then((res) => {
-                this.nav = res.nav;
-            });
     }
 }

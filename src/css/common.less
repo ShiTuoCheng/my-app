@@ -43,6 +43,8 @@
 @tabBarHig: 40px;
 @copyrightHig: 30px;
 
+@excludeHeaderHig: ~'calc(100vh - @{headerHig})';
+
 html, body {
     height: 100%;
     margin: 0;
@@ -225,7 +227,7 @@ input:focus {
         .transform(translateX(-50%) translateY(-50%));
     }
 }
-.f-centerAlign(@ele; X) {
+.f-centerAlign(X; @ele;) {
     position: relative;
 
     @{ele} {
@@ -234,7 +236,7 @@ input:focus {
         .transform(translateX(-50%) );
     }
 }
-.f-centerAlign(@ele; Y) {
+.f-centerAlign(Y; @ele;) {
     position: relative;
 
     @{ele} {

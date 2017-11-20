@@ -6,7 +6,7 @@
     &_main {
         overflow: hidden;
         position: relative;
-        height: ~'calc(100vh - @{headerHig})';
+        height: @excludeHeaderHig;
         background-color: #fef9ed;
     }
     &_viewArea {
@@ -47,10 +47,18 @@
     }
 }
 .c-header {
+    height: @headerHig;
     line-height: @headerHig;
     color: @fontWhite;
     position: relative;
     margin-left: 70px; margin-right: 70px;
+
+    .f-centerAlign(Y; ~'.c-header_infoArea');
+
+    &_infoArea {
+        line-height: normal;
+        left: 0;
+    }
 }
 .c-funArea {
     &_item {
@@ -90,10 +98,10 @@
         flex-grow: 1;
         text-align: left;
         overflow: hidden;
+        margin-right: 3px;
     }
     &_main {
         display: flex;
-        // flex: auto;
         text-align: center;
     }
     &_tab {
@@ -106,6 +114,9 @@
         &-active {
             background-color: @mainColor;
             color: @fontWhite;
+        }
+        &:last-child {
+            border-right-width: 0;
         }
     }
     &_close {

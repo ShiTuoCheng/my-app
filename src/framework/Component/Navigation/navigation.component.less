@@ -2,13 +2,15 @@
 
 .c-nav {
     width: 16%;
+    height: @excludeHeaderHig;
     max-width: 250px;
     float: left;
     color: @fontWhite;
     .transition(all, .5s, ease);
+    overflow: hidden;
 
     &_wrap {
-        padding: 20px 10px;        
+        padding: 20px 10px;
     }
     &_item {
         cursor: pointer;
@@ -37,7 +39,7 @@
         padding-top: 10px; padding-bottom: 10px;
 
         & + & {
-            border-top: 1px dashed @navSubLine; 
+            border-top: 1px dashed @navSubLine;
         }
     }
 

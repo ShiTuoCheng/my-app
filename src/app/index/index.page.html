@@ -1,6 +1,6 @@
 <div class="index">
     <header class="c-header">
-        XXX,欢迎您
+        XXX,欢迎您<br>
         <app-comm-weather></app-comm-weather>
         <ul class="c-funArea c-funArea-header">
             <li class="c-funArea_item" (click)="reloadPage()">
@@ -27,13 +27,13 @@
         </app-nav-component>
 
         <div class="index_main">
-            <div class="index_navControl" 
+            <button class="index_navControl" 
                 [ngClass]="{ 'index_navControl-active': navControl }"
                 (mouseenter)="navControl = true" 
                 (mouseleave)="navControl = false"
                 (click)="navMini = navMini ? false : true"
-            >
-            </div>
+                [disabled] = "isExtend"
+            ></button>
     
             <div class="c-tabBar">
                 <div class="c-tabBar_last">

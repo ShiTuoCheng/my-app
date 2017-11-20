@@ -550,6 +550,7 @@ input:focus {
   line-height: 30px;
 }
 .index_navControl {
+  outline: none;
   width: 30px;
   height: 50px;
   background-color: #ff5700;

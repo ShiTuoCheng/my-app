@@ -21,7 +21,8 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     private viewHig: number;
     private url: string;
     private navControl: boolean;
-    private navMini: boolean = false;
+    private navMini = false;
+    private isExtend = false;
     private fuck = [
         {
             'navName': '大佬',
@@ -86,6 +87,9 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.loadingService.show.emit(null);
+        this.navigationService.hasSub.subscribe((result?: boolean) => {
+            result === true ? this.isExtend = true : this.isExtend = false;
+        });
     }
 
     ngOnInit() {

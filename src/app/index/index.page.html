@@ -30,13 +30,13 @@
         </app-nav-component>
 
         <div class="index_main">
-            <div class="index_navControl"
+            <button class="index_navControl"
                 [ngClass]="{ 'index_navControl-active': navControl }"
                 (mouseenter)="navControl = true"
                 (mouseleave)="navControl = false"
                 (click)="navMini = navMini ? false : true"
-            >
-            </div>
+                [disabled] = "isExtend"
+            ></button>
 
             <div class="c-tabBar">
                 <div class="c-tabBar_last">

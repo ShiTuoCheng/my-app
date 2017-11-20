@@ -8,7 +8,7 @@ import { Handler, DataType } from '../../Utils/Handler';
     selector: 'app-comm-weather',
     template: '<div class="weatherDiv">{{location}} | {{weatherState}} | {{weatherTemp}}</div>',
     styles: ['div.weatherDiv {' +
-                'color: #fc6719;' +
+                'color: #fff;' +
                 'display: inline-block;' +
                 'margin: 0 auto}'
     ]

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { IndexPageComponent } from './index.page';
+import { IndexPageComponent,  } from './index.page';
 
 import { SearchService } from '@framework/Component/Search/search.component';
 import { SearchComponent } from '@framework/Component/Search/search.component';
@@ -10,7 +10,7 @@ import { CommFooterComponent } from '@framework/Component/Footer/footer.componen
 import { CommHeaderComponent } from '@framework/Component/Header/header.component';
 import { WeatherComponent } from '@framework/Component/Weather/weather.component';
 import { TimeComponent } from '@framework/Component/Timer/time.component';
-import { NavigationComponent, NavigationService } from '@framework/Component/Navigation/navigation.component';
+import { NavigationComponent, NavigationService, NavigationPipe } from '@framework/Component/Navigation/navigation.component';
 import {
     LoadingComponent,
     LoadingService
@@ -26,7 +26,8 @@ import {
         TimeComponent,
         SearchComponent,
         LoadingComponent,
-        NavigationComponent
+        NavigationComponent,
+        NavigationPipe
     ],
     imports: [
         CommonModule,

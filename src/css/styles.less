@@ -1,45 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+	苏成闯
+	20160601
+*/
 
-@import './form.less';
-@import './common.less';
-@import './userControl.less';
-@import './layout.less';
-@import './icon.less';
-@import './login.less';
-@import './loginBlock.less';
-// inline-block
+// Base
+@import "common.less";
 
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-p,
-ul,
-ol,
-li,
-form,
-button,
-input,
-textarea,
-th,
-td,
-div,
-section,
-dl,
-dt,
-dd,
-figure,
-figcaption {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: content-box;
-    font-weight: normal;
-}
+@import "layout.less";
 
-@buttonMain_color: #fc6719;
+
+// Page
+@import "comm/form.less";
+
+@import "comm/icon.less";
+
+@import "comm/table.less";
+
+@import "index.less";

@@ -20,20 +20,22 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     private viewMainHig: number;
     private viewHig: number;
     private url: string;
+    private navControl: boolean;
+    private navMini: boolean = false;
     private fuck = [
         {
-            'navName': '导航栏1',
+            'navName': '大佬',
             'sub': [
                 { 'subName': '子导航栏1' },
                 { 'subName': '子导航栏2' }
             ]
         },
         {
-            'navName': '导航栏2',
+            'navName': '带带我',
             'href': '/index/header'
         },
         {
-            'navName': '导航栏3',
+            'navName': '牛逼',
             'sub': [
                 {
                     'subName': '子导航栏1',
@@ -50,11 +52,11 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
             ]
         },
         {
-            'navName': '导航栏4',
+            'navName': 'Shit',
             'href': '/index'
         },
         {
-            'navName': '导航栏5',
+            'navName': 'Fuck',
             'sub': [
                 { 'subName': '子导航栏1' },
                 { 'subName': '子导航栏2' },
@@ -87,10 +89,6 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        this.setStyle();
-
-        $('.if_nav_mainWrap').height($(window).height() - $('.bdHeader').height());
-
         this.navigationService.navigationClick.subscribe((str?: any) => {
 
             this.router.navigate([str], { replaceUrl: true });
@@ -115,14 +113,6 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     searchShow() {
         this.searchService.searchShow.emit(null);
-    }
-
-    private setStyle(): void {
-
-        this.viewMainHig = document.documentElement.clientHeight
-         - this.choseDom('.bdHeader').offsetHeight
-         - this.choseDom('.if_control').offsetHeight
-         - this.choseDom('.if_copyright').offsetHeight;
     }
 
     private choseDom(dom: string): any {

@@ -1,155 +1,26 @@
-/*
-    苏成闯
-    布局
-*/
-
-@mainColor: #fc6719;
-@coreWid: 1200px;
-@fontSize: 14px;
-@fontSize1: 12px;
-@fontSize2: 16px;
-@fontColor1: #fff;
-@fontColor2: #666;
-@fontColor3: #999;
-@lineColor: #e3e3e3;
-@radius: 6px;
-
-.f-viewArea {
-    overflow: hidden;
-    position: relative;
+// 默认字
+.g-tx() {
+    font-size: @fontSize;
+    color: @fontColor;
+}
+// 小号字
+.g-tx-sm() {
+    font-size: @fontSize-sm;
+    color: @fontColor-sm;
+}
+// 白色字
+.g-tx-white() {
+    color: @fontWhite;
+}
+.g-mainBg() {
+    background-image: linear-gradient(45deg, @mainColor 0%, @bg2 100%);
+    background-color: @mainColor;
 }
 
-.laydate_box * {
-    box-sizing: content-box !important;
+.l-viewWrap-detail {
+    text-align: center;
 }
-
-.laydate_body .laydate_y {
-    margin-right: 3px !important;
-}
-
-.l_coreBox {
-    width: @coreWid;
-    margin: 0 auto;
-}
-.l_minCoreBox {
-    min-width: @coreWid;
-}
-
-.l_fsm {
-    font-size: @fontSize1;
-    color: @fontColor3;
-}
-
-.f_bp(@p) {
-    background-image: url("../assets/spriteS.png");
-    background-repeat: no-repeat;
-    background-position: @p;
-}
-
-html {
-    height: 100%;
-    .l_minCoreBox;
-    background: #fd671b;
-    background: -moz-linear-gradient(45deg,  #fd671b 0%, #f1991a 100%);
-    background: -webkit-linear-gradient(45deg,  #fd671b 0%,#f1991a 100%);
-    background: linear-gradient(45deg,  #fd671b 0%,#f1991a 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd671b', endColorstr='#f1991a',GradientType=1 );
-}
-
-body {
-    height: 100%;
-    overflow: hidden;
-}
-
-.c-scale {
-    @height: 20px;
-
-    width: 260px; height: @height;
-    border: 1px solid @buttonMain_color;
-    border-radius: 10px;
-    position: relative;
-    font-size: 0;
-
-    &_scaleWrap {
-        width: 100%; height: 5px;
-        position: absolute;
-        bottom: 0;
-        font-size: 0;
-    }
-
-    &_scale {
-        height: 100%;
-        position: absolute;
-        border-left: 1px solid #666;
-    }
-
-    &_block {
-        position: absolute;
-        width: 25.8px; height: @height;
-        background-color: @buttonMain_color;
-    }
-
-    &_firstBlock {
-        //@extned(.c-scale_block);
-
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-    &_lastBlock {
-        //@extned(.c-scale_block);
-
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-
-    .arrow() {
-        .creatArrow(top; 10px; 14px; @buttonMain_color; @buttonMain_color; 0; 0);
-
-        position: absolute;
-        top: 100%; left: 0;
-        cursor: pointer;
-    }
-
-    &_leftArrow, &_rightArrow {
-        .arrow();
-    }
-}
-.c-guide() {
-    @color: #fff;
-
+.l-inputGroup {
     .inline-block;
-    border-radius: @main_radius;
-    background-color: #ffa82b;
-    padding: 2px 10px;
-    margin-bottom: 10px;
-
-    &_item {
-        .inline-block;
-        color: @color;
-        cursor: pointer;
-        .transition(color, .2s);
-
-        &:hover {
-            color: #d46200;
-        }
-    }
-    // 小箭头 指示标志
-    &_sign {
-        color: @color;
-        display: none;
-    }
-    // 小箭头 显隐
-    &_item + &_item &_sign {
-        display: inline-block;
-    }
-}
-// 路标
-.c-guide {
-    .c-guide();
-
-    // 状态
-    &-roomPrice {
-        .c-guide();
-        position: absolute;
-    }
+    text-align: left;
 }

@@ -1,30 +1,35 @@
-<section class="login loginWrap">
-    <span class="loginWrap__vaAid"></span>
-    <div class="loginWrap__wrap loginBlock">
-        <img src="../../assets/logo.png" alt="Logo" class="loginBlock__logo">
-    
-        <form name="loginVerification" [formGroup]="loginForm">
-
-            <div class="loginInputIconWrap liiw--username">
-                <input class="loginInput" id="name" type="text" name="username" placeholder="请输入用户名" formControlName="name"
-                 [(ngModel)]="user.userName" required>
-                <span class="liiw__icon"></span>
+<div class="c-loginLayer login">
+    <div class="c-loginLayer_main">
+        <img class="c-loginLayer_logo" src="/images/logo.png" />
+        <form [formGroup]="loginForm">
+            <div class="c-snowInputIconWrap">
+                <span class="i-user i-user-vCen c-snowInputIconWrap_icon"></span>
+                <input class="c-snowInput c-snowInput-block" 
+                       placeholder="请输入用户名" 
+                       id="name" 
+                       name="username" 
+                       formControlName="name"
+                       [(ngModel)]="user.userName" required
+                >
                 <span *ngIf="isFieldValid('name')" class="help-block">*请输入用户名</span>
-
             </div>
-
-            <div class="loginInputIconWrap liiw--password js-liiw--password loginInputIconWrap--mgn0">
-                <input class="loginInput" id="password" formControlName="password"
-                 type="password" name="password" placeholder="请输入密码" [(ngModel)]="user.userPassword" required>
-                <span class="liiw__icon"></span>
+            <div class="c-snowInputIconWrap">
+                <span class="i-pass i-pass-vCen c-snowInputIconWrap_icon"></span>
+                <input class="c-snowInput c-snowInput-block" 
+                       placeholder="请输入密码" 
+                       id="password" 
+                       name="password" 
+                       formControlName="password"
+                       [(ngModel)]="user.userPassword" required
+                >
                 <span *ngIf="isFieldValid('password')" class="help-block">*请输入密码</span>
-
             </div>
-            <button class="loginBtn" (click)="loginSubmit()">登&emsp;录</button>
-
+            <button class="c-loginLayer_btn" (click)="loginSubmit()">登&emsp;录</button>
         </form>
     </div>
-    
-    <div class="pic_code"></div>
-    <app-comm-loading></app-comm-loading>
-</section>
+    <span class="c-loginLayer_vLine"></span>
+
+    <div class="pic_code"></div>    
+</div>
+
+<app-comm-loading></app-comm-loading>

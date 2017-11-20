@@ -13,7 +13,7 @@ class UserInfo {
 
     selector: 'app-login-page',
     templateUrl: './login.page.html',
-    styles: ['.help-block{ color: red; font-size: 12px; margin-top:10px; position: absolute; right: 0;}']
+    styleUrls: ['./login.page.less']
 })
 
 export class LoginPageComponent implements OnInit, AfterViewInit {

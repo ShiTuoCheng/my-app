@@ -1,76 +1,174 @@
-<div class="if_wrap">
-    <div class="if_wrapper bdHeader">
-        <div class="header_title">
-            <p>Test，欢迎您~</p>
-            <app-comm-weather></app-comm-weather>
-        </div>
-        <ul class="bhiFun">
-            <li class="ifHdCon" (click)="reloadPage()">
-                <i class="i_icon5-0"></i>
-                <span class="ihdcTxt">刷新</span>
+<div class="index">
+    <header class="c-header">
+        XXX,欢迎您
+        <app-comm-weather></app-comm-weather>
+        <ul class="c-funArea c-funArea-header">
+            <li class="c-funArea_item" (click)="reloadPage()">
+                <span class="i-refresh c-funArea_icon"></span>
+                刷新
             </li>
-            <li class="ifHdCon" style="cursor: default;">
-                <i class="i_icon6-0"></i>
-                <app-comm-timer></app-comm-timer>
+            <li class="c-funArea_item">
+                <span class="i-clock c-funArea_icon"></span>
+                2017年10月16日 22:31:14
             </li>
-            <li class="ifHdCon" *ngIf="dateClock" (click)="$state.go('memo')">
-                <i style="background:url('/images/memo.png') 0 0 no-repeat; width:25px; height: 25px; display:inline-block; vertical-align: middle; margin-right: 10px;"></i>
-                备忘
-            </li>
-            <li class="ifHdCon" (click)="signOut()">
-                <i class="i_icon7-0"></i>
-                <span class="ihdcTxt">退出登录</span>
+            <li class="c-funArea_item" (click)="signOut()">
+                <span class="i-power c-funArea_icon"></span>
+                退出登录{{navMini}}
             </li>
         </ul>
-    </div>
-    <div class="if_wrapper">
-        
-        <app-nav-component [nav]=fuck></app-nav-component>
-        
-        <div class="if_body">
-            <div class="if_wrap">
-                <table class="if_control" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td style="padding-left: 20px;">
-                            <table class="ifCtTabWrap" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="ifctwArrBox" ng-click="tabBarLeft()">
-                                        <span class="ifctwLast"></span>
-                                    </td>
-                                    <td class="ifctwTbWrap" tab-Bar>
-                                        <!-- <ul class="ifctwTabBox" ng-style="{'width': tabBoxWid}">
-                                            <li class="ifctwbTab" ng-repeat="i in tabList" ng-click="$state.go(i.href)" ng-animate="{enter: 'indexTabCreate', leave: 'indexTabClose'}"
-                                                ng-class="{'active': curTab === i}">
-                                                <font class="ifctwbtTxt">{{i.title}}{{i===curTab}}</font>
-                                                <i ng-class="{true: 'ifctwbtClose-ie', false: 'ifctwbtClose'}[isIE]" ng-click="tabBarT.close(i); $event.stopPropagation()">
-                                                </i>
-                                            </li>
-                                        </ul> -->
-                                    </td>
-                                    <td class="ifctwArrBox" ng-click="tabBarRight()" ng-click="moreTabSwitch = !moreTabSwitch">
-                                        <i class="ifctwNext"></i>
-                                        <!-- <ul class="tableList" ng-show="moreTabSwitch" ng-animate="{show: 'moreTabOn', hide: 'moreTabOff'}">
-                                            <li class="tableList_item" ng-repeat="moreTab in moreTab" ng-click="$state.go(moreTab.href); $event.stopPropagation()">
-                                                {{ moreTab.title }}</li>
-                                        </ul> -->
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td class="ifctwbTab" (click)="tabCloseAll()">关闭全部</td>
-                        <td class="ifConSearch" (click)="searchShow(); $event.stopPropagation()">
-                            <i class="i_icon8"></i>
-                            <input class="ifcsSearch" type="text" placeholder="请输入搜索内容">
-                        </td>
-                    </tr>
-                </table>
-                <div class="if_main">
-                    <router-outlet class="if_view" [ngStyle]="{'height': viewMainHig}"></router-outlet>
-                    <div class="if_copyright">Copyright © 2017 TOPu.net All rights reserved.</div>
+    </header>
+    <div class="index_wrap">
+        <app-nav-component [nav]="fuck" 
+                           (mouseenter)="navControl = true" 
+                           (mouseleave)="navControl = false"
+                           (ngClass)="{ 'c-nav-mini': navMini }"
+                           [miniMode]="navMini"
+        >
+        </app-nav-component>
+
+        <div class="index_main">
+            <div class="index_navControl" 
+                [ngClass]="{ 'index_navControl-active': navControl }"
+                (mouseenter)="navControl = true" 
+                (mouseleave)="navControl = false"
+                (click)="navMini = navMini ? false : true"
+            >
+            </div>
+    
+            <div class="c-tabBar">
+                <div class="c-tabBar_last">
+                    <span></span>
+                </div>
+                <div class="c-tabBar_mainWrap c-tabBar_item">
+                    <ul class="c-tabBar_main">
+                            <li class="c-tabBar_tab c-tabBar_item">
+                                Test <span class="c-tabBar_close"></span>
+                            </li>
+                            <li class="c-tabBar_tab c-tabBar_tab-active c-tabBar_item">
+                                Test0 <span class="c-tabBar_close c-tabBar_close-active"></span>
+                            </li>
+                            <!-- <li class="c-tabBar_tab c-tabBar_item">Test</li>
+                            <li class="c-tabBar_tab c-tabBar_tab-active c-tabBar_item">Test0</li>
+                            <li class="c-tabBar_tab c-tabBar_item">Test1</li>
+                            <li class="c-tabBar_tab c-tabBar_item">Test</li>
+                            <li class="c-tabBar_tab c-tabBar_tab-active c-tabBar_item">Test0</li>
+                            <li class="c-tabBar_tab c-tabBar_item">Test1</li> -->
+                    </ul>
+                </div>
+                <div class="c-tabBar_next">
+                    <span></span>
+                </div>
+                <div class="c-tabBar_closeAll c-tabBar_item">关闭全部</div>
+                <div class="c-tabBar_search">
+                    <span class="i-search"></span>
                 </div>
             </div>
+        
+            <div class="index_viewArea">
+                <router-outlet class="if_view"></router-outlet>
+                    
+                <!-- <table class="c-table">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>学生姓名</th>
+                            <th>班级</th>
+                            <th>入学日期</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tr class="a"><td>abc</td></tr>
+                    <tr>
+                        <td>233</td>
+                        <td>苏成闯</td>
+                        <td>2年23班</td>
+                        <td><span class="c-table_multiple">盘古开天时<span></td>
+                        <td><button class="c-button" disabled>别闹</button></td>
+                    </tr>
+                    <tr>
+                        <td>233</td>
+                        <td>苏成闯</td>
+                        <td>2年23班</td>
+                        <td>盘古开天时</td>
+                        <td><button class="c-button c-button-dis">别闹</button></td>
+                    </tr>
+                </table>
+                <div class="c-pageNum">
+                    <ul class="c-pageNum_main">
+                        <li class="c-pageNum_item">1</li>
+                        <li class="c-pageNum_item c-pageNum_item-active">2</li>
+                        <li class="c-pageNum_item">3</li>
+                    </ul>
+                </div> -->
+                <!-- <div class="l-viewWrap-detail">
+                    <div class="l-inputGroup">
+                        <label class="c-formWrap c-formWrap-bl">
+                            <span class="c-formWrap_name c-formWrap_name-important">门店名称：</span>
+                            <input class="c-input" type="text" placeholder="Test">
+                        </label>
+                        <label class="c-formWrap c-formWrap-bl">
+                            <span class="c-formWrap_name">名称：</span>
+                            <input class="c-input c-input-ext" type="text" placeholder="Test">
+                        </label>
+                        <label class="c-formWrap c-formWrap-bl">
+                            <span class="c-formWrap_name">名称：</span>
+                            <input class="c-input" type="text" placeholder="Test">
+                            <button class="c-button">Test</button>
+                        </label>
+                        <label class="c-formWrap c-formWrap-bl">
+                            <span class="c-formWrap_name">嗯嗯：</span>
+                            <div class="c-select">
+                                <input class="c-input" type="text" disabled placeholder="Test">
+                                <div class="c-select_control">
+                                    <span class="c-select_arr"></span>
+                                </div>
+                                <div class="c-select_optionWrap">
+                                    <ul>
+                                        <li class="c-select_option">
+                                            <span class="c-select_txt">Test</span>
+                                        </li>
+                                        <li class="c-select_option">Test1</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="c-formWrap c-formWrap-bl c-formWrap-multiple">
+                            <span class="c-formWrap_name c-formWrap_name-important">继续：</span>
+                            <div class="c-formWrap_bd c-formWrap_bd-textSpacAlign">
+                                <p>456852</p>
+                                <p>456852</p>
+                                <p>456852</p>
+                                <p>456852</p>
+                            </div>
+                        </label>
+                        <div class="c-formWrap c-formWrap-bl">
+                            <span class="c-formWrap_name c-formWrap_name-important">艳照：</span>
+                            <div class="c-formWrap_bd">
+                                <label class="c-fileArea">
+                                    选择文件 jpg / png
+                                    <input class="c-input" type="file" placeholder="Test">
+                                </label>
+                                <span class="c-controlPoint">✓</span>
+                                <span class="c-controlPoint">✓</span>
+                            </div>
+                        </div>
+                        <label class="c-formWrap c-formWrap-bl c-formWrap-multiple">
+                            <span class="c-formWrap_name c-formWrap_name-important">客户留言：</span>
+                            <textarea class="c-textarea" placeholder="Test"></textarea>
+                        </label>
+                    </div>
+    
+                    <div style="display: block; margin-top: 20px;">
+                        <button class="c-button">提交</button>
+                        <button class="c-button">清空</button>
+                    </div>
+                </div> -->
+            </div>
+            <div class="index_copyright">Copyright © 2016 TOPU.net All rights reserved.</div>
         </div>
     </div>
-</div> 
-<app-comm-search></app-comm-search>
+</div>
+
+
+<!-- <app-comm-search></app-comm-search> -->
 <app-comm-loading></app-comm-loading>

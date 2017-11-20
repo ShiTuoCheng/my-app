@@ -1,20 +1,13 @@
-<nav class="if_nav">
-    <div class="if_nav_mainWrap" id="nav" style="overflow: auto;" appScrollDirective>
-        <ul class="nav_main">
-            <li class="nmItem" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
-
-                <div class="nmiSurfac">
-                    <i class="i_icon2-"></i>
-                    <font class="nmiTxt">{{m.navName}}</font>
-                    <span class="nmiArr" *ngIf="m.sub" [ngClass]="{'active': activeNav === m}">
-                    </span>
-                </div>
-                <ul class="nvmSub" *ngIf="activeNav === m" [@visibility]="visibility">
-                    <li class="nvmsItem" *ngFor="let s of m.sub" (click)="subSlide(s)">
-                        {{s.subName}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+<nav class="c-nav" [ngClass]="{ 'c-nav-mini': miniMode }" [@miniMode]="miniMode">
+    <ul class="c-nav_main">
+        <li class="c-nav_item" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
+            <div class="c-nav_wrap">
+                <span class="c-nav_icon">{{m.navName | navigationPipe}}</span>
+                <span class="c-nav_txt">{{ m.navName }}</span>
+            </div>
+            <ul *ngIf="activeNav === m" [@visibility]="visibility">
+                <li class="c-nav_sub" *ngFor="let s of m.sub" (click)="subSlide(s)">{{ s.subName }}</li>
+            </ul>
+        </li>
+    </ul>
 </nav>

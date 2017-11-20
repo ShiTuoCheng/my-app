@@ -21,7 +21,8 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     private viewHig: number;
     private url: string;
     private navControl: boolean;
-    private navMini: boolean = false;
+    private navMini = false;
+    private isExtend = false;
     private fuck = [
         {
             'navName': '大佬',
@@ -68,7 +69,105 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
                 { 'subName': '子导航栏8' },
                 { 'subName': '子导航栏9' }
             ]
-        }
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
+        {
+            'navName': 'Fuck',
+            'sub': [
+                { 'subName': '子导航栏1' },
+                { 'subName': '子导航栏2' },
+                { 'subName': '子导航栏3' },
+                { 'subName': '子导航栏4' },
+                { 'subName': '子导航栏5' },
+                { 'subName': '子导航栏6' },
+                { 'subName': '子导航栏7' },
+                { 'subName': '子导航栏8' },
+                { 'subName': '子导航栏9' }
+            ]
+        },
     ];
 
     constructor(
@@ -86,6 +185,9 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.loadingService.show.emit(null);
+        this.navigationService.hasSub.subscribe((result?: boolean) => {
+            result === true ? this.isExtend = true : this.isExtend = false;
+        });
     }
 
     ngOnInit() {

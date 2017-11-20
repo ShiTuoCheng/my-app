@@ -36,12 +36,12 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
     loginSubmit() {
 
         // 生成二维码图片
-        this.pic_codeHandler('https://www.angular.cn/generated/images/guide/cli-quickstart/app-works.png', null, null);
         this.loginForm.controls['name'].markAsTouched();
         this.loginForm.controls['password'].markAsTouched();
         if (this.loginForm.valid) {
-            console.log('form submitted');
             this.submitHandler();
+            this.pic_codeHandler('https://www.angular.cn/generated/images/guide/cli-quickstart/app-works.png', null, null);
+
         }
     }
 

@@ -1,18 +1,13 @@
-import { Component, OnInit, Input, EventEmitter, Injectable, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Injectable, Pipe, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { animate, trigger, state, style, transition, keyframes } from '@angular/animations';
 import { log } from 'util';
 
-interface NavData {
-
-    nav: Array<any>;
-    navName: string;
-}
-
 @Injectable()
 export class NavigationService {
     public navigationClick = new EventEmitter<any>();
+    public hasSub = new EventEmitter<any>();
 }
 
 @Pipe({name: 'navigationPipe'})
@@ -35,9 +30,14 @@ export class NavigationPipe implements PipeTransform {
         ]),
 
         trigger('miniMode', [
-            state('false', style({width: '16%'})),
-            state('true', style({width: '*'})),
-            transition('true => false', animate('100ms ease-in-out'))
+            transition('true => false', [
+                style({ width: '10%' }),
+                animate(250, style({ width: '16%' }))
+            ]),
+            transition('false => true', [
+                style({ width: '16%' }),
+                animate(250, style({ width: '*' }))
+            ])
         ])
     ]
 })
@@ -47,11 +47,12 @@ export class NavigationComponent implements OnInit {
     @Input() private miniMode: boolean;
     private activeNav: any;
     private visibility;
-    
+    @Output() isExtend = false;
 
-    constructor(private router: Router, private http: HttpClient, private navigationService: NavigationService) {}
+    constructor(private navigationService: NavigationService) {}
 
     ngOnInit() {
+        console.log(this.visibility);
     }
 
     navSlide(act?: any): void {
@@ -61,6 +62,8 @@ export class NavigationComponent implements OnInit {
             const str = act.href;
             this.navigationService.navigationClick.emit(str);
         }
+
+        this.navigationService.hasSub.emit(act.sub ? true : false);
     }
 
     subSlide(act?: any) {

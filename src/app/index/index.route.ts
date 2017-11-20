@@ -5,7 +5,6 @@ import { IndexPageComponent,  } from './index.page';
 
 import { SearchService } from '@framework/Component/Search/search.component';
 import { SearchComponent } from '@framework/Component/Search/search.component';
-import { AppComponent } from '@app/app.component';
 import { CommFooterComponent } from '@framework/Component/Footer/footer.component';
 import { CommHeaderComponent } from '@framework/Component/Header/header.component';
 import { WeatherComponent } from '@framework/Component/Weather/weather.component';
@@ -15,6 +14,7 @@ import {
     LoadingComponent,
     LoadingService
 } from '@framework/Component/Loading/loading.component';
+import { ScrollDirective } from '@framework/Directive/scroll.directive';
 
 // export const ROUTES: Routes = ;
 
@@ -27,7 +27,8 @@ import {
         SearchComponent,
         LoadingComponent,
         NavigationComponent,
-        NavigationPipe
+        NavigationPipe,
+        ScrollDirective
     ],
     imports: [
         CommonModule,

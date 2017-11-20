@@ -30,13 +30,13 @@
         </app-nav-component>
 
         <div class="index_main">
-            <div class="index_navControl"
+            <button class="index_navControl"
                 [ngClass]="{ 'index_navControl-active': navControl }"
                 (mouseenter)="navControl = true"
                 (mouseleave)="navControl = false"
                 (click)="navMini = navMini ? false : true"
-            >
-            </div>
+                [disabled] = "isExtend"
+            ></button>
 
             <div class="c-tabBar">
                 <div class="c-tabBar_last">
@@ -45,10 +45,14 @@
                 <div class="c-tabBar_mainWrap c-tabBar_item">
                     <ul class="c-tabBar_main">
                             <li class="c-tabBar_tab c-tabBar_item">
-                                Test <span class="c-tabBar_close"></span>
+                                <div class="c-tabBar_tab_con">
+                                    Test <span class="c-tabBar_close"></span>
+                                </div>
                             </li>
                             <li class="c-tabBar_tab c-tabBar_item c-tabBar_tab-active">
-                                Test0 <span class="c-tabBar_close c-tabBar_close-active"></span>
+                                <div class="c-tabBar_tab_con">
+                                    Test0 <span class="c-tabBar_close c-tabBar_close-active"></span>
+                                </div>
                             </li>
                             <!-- <li class="c-tabBar_tab c-tabBar_item">Test</li>
                             <li class="c-tabBar_tab c-tabBar_tab-active c-tabBar_item">Test0</li>
@@ -68,9 +72,22 @@
             </div>
 
             <div class="index_viewArea">
-                <router-outlet class="if_view" style="opacity: 0;"></router-outlet>
+                <!-- <router-outlet class="if_view" style="opacity: 0;"></router-outlet> -->
 
-                <!-- <table class="c-table">
+                <!-- <div class="table">
+                    <div class="row">
+                        <div class="col">Test</div>
+                        <div class="col">Test2</div>
+                    </div>
+                    <div class="row">
+                        <div class="test">
+                            <div class="col">Test</div>
+                            <div class="col">Test</div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <table class="c-table">
                     <thead>
                         <tr>
                             <th>编号</th>
@@ -80,29 +97,38 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tr class="a"><td>abc</td></tr>
-                    <tr>
-                        <td>233</td>
-                        <td>苏成闯</td>
-                        <td>2年23班</td>
-                        <td><span class="c-table_multiple">盘古开天时<span></td>
-                        <td><button class="c-button" disabled>别闹</button></td>
-                    </tr>
-                    <tr>
-                        <td>233</td>
-                        <td>苏成闯</td>
-                        <td>2年23班</td>
-                        <td>盘古开天时</td>
-                        <td><button class="c-button c-button-dis">别闹</button></td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>233</td>
+                            <td>苏成闯</td>
+                            <td>2年23班</td>
+                            <td>
+                                <span class="c-table_multiple">盘古开天时</span>
+                            </td>
+                            <td>
+                                <button class="c-button" disabled>别闹</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>233</td>
+                            <td>苏成闯</td>
+                            <td>2年23班</td>
+                            <td>盘古开天时</td>
+                            <td>
+                                <button class="c-button">别闹</button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
                 <div class="c-pageNum">
+                    <span class="c-pageNum_last"></span>
                     <ul class="c-pageNum_main">
                         <li class="c-pageNum_item">1</li>
                         <li class="c-pageNum_item c-pageNum_item-active">2</li>
                         <li class="c-pageNum_item">3</li>
                     </ul>
-                </div> -->
+                    <span class="c-pageNum_next"></span>
+                </div>
                 <!-- <div class="l-viewWrap-detail">
                     <div class="l-inputGroup">
                         <label class="c-formWrap c-formWrap-bl">

@@ -3,9 +3,13 @@
 */
 
 import { Directive, Input, OnInit, ElementRef } from '@angular/core';
+import iScroll from '@framework/lib/iscroll'; 
+declare var jquery: any;
+declare var $: any;
+
 
 @Directive({
-    selector: '[appScrollDirective]'
+    selector: '[g-scroll]'
 })
 
 export class ScrollDirective implements OnInit {
@@ -16,6 +20,11 @@ export class ScrollDirective implements OnInit {
 
         setTimeout(() => {
             const ele = this.elementRef.nativeElement;
+
+            new iScroll(this.elementRef.nativeElement, {
+                mouseWheel: true,
+                scrollbars: true
+            });
         }, 0);
     }
 }

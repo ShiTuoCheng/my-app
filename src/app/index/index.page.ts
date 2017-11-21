@@ -89,6 +89,9 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
         this.loadingService.show.emit(null);
         this.navigationService.hasSub.subscribe((result?: boolean) => {
             result === true ? this.isExtend = true : this.isExtend = false;
+            if (result === true) {
+                this.navMini = false;
+            }
         });
     }
 

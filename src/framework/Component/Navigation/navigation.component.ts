@@ -31,12 +31,12 @@ export class NavigationPipe implements PipeTransform {
 
         trigger('miniMode', [
             transition('true => false', [
-                style({ width: '10%' }),
-                animate(250, style({ width: '16%' }))
+                style({ width: '10%'}),
+                animate('.2s ease-in', style({ width: '16%'}))
             ]),
             transition('false => true', [
-                style({ width: '16%' }),
-                animate(250, style({ width: '*' }))
+                style({ width: '16%'}),
+                animate('.2s ease-in', style({ width: '*', }))
             ])
         ])
     ]

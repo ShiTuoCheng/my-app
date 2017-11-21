@@ -6,7 +6,6 @@ import { IndexPageComponent,  } from './index.page';
 import { SearchService } from '@framework/Component/Search/search.component';
 import { SearchComponent } from '@framework/Component/Search/search.component';
 import { AppComponent } from '@app/app.component';
-import { CommFooterComponent } from '@framework/Component/Footer/footer.component';
 import { CommHeaderComponent } from '@framework/Component/Header/header.component';
 import { WeatherComponent } from '@framework/Component/Weather/weather.component';
 import { TimeComponent } from '@framework/Component/Timer/time.component';

@@ -21,8 +21,9 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
     private viewHig: number;
     private url: string;
     private navControl: boolean;
-    private navMini = false;
-    private isExtend = false;
+    private navMini = false; // 导航栏缩小模式
+    private isExtend = false; // 子导航栏是否为展开模式
+    // 导航栏数据结构
     private fuck = [
         {
             'navName': '大佬',
@@ -87,6 +88,7 @@ export class IndexPageComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.loadingService.show.emit(null);
+        // 实现子导航栏点击逻辑
         this.navigationService.hasSub.subscribe((result?: boolean) => {
             result === true ? this.isExtend = true : this.isExtend = false;
             if (result === true) {

@@ -6,7 +6,9 @@ import { log } from 'util';
 
 @Injectable()
 export class NavigationService {
+    // 导航栏事件分发
     public navigationClick = new EventEmitter<any>();
+    // 子导航栏点击事件分发
     public hasSub = new EventEmitter<any>();
 }
 
@@ -43,28 +45,32 @@ export class NavigationPipe implements PipeTransform {
 })
 export class NavigationComponent implements OnInit {
 
-    @Input() private nav = [];
-    @Input() private miniMode: boolean;
+    @Input() private nav = []; // 导航栏数据结构
+    @Input() private miniMode: boolean;  // 导航栏缩小模式
     private activeNav: any;
     private visibility;
-    @Output() isExtend = false;
+    @Output() isExtend = false; // 是否为展开模式
 
     constructor(private navigationService: NavigationService) {}
 
     ngOnInit() {
     }
 
+    // 主导航栏点击事件
     navSlide(act?: any): void {
         this.activeNav = act;
         if (act.href) {
 
             const str = act.href;
+            // 事件分发，具体实现逻辑需引入导航栏服务
             this.navigationService.navigationClick.emit(str);
         }
 
+        // 事件分发，具体实现逻辑需引入导航栏服务
         this.navigationService.hasSub.emit(act.sub ? true : false);
     }
 
+    // 子导航栏点击事件
     subSlide(act?: any) {
         if (act.href) {
 

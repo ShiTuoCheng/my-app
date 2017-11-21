@@ -52,7 +52,6 @@ export class NavigationComponent implements OnInit {
     constructor(private navigationService: NavigationService) {}
 
     ngOnInit() {
-        console.log(this.visibility);
     }
 
     navSlide(act?: any): void {

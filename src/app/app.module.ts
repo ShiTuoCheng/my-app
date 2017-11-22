@@ -1,7 +1,15 @@
+// Lib
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// 页
+import { LoginPageComponent } from './login/login.page';
+
+// 组件
 import {
   TabControlService,
   PageBackComponent,
@@ -9,20 +17,23 @@ import {
   PageCloseOrBackComponent
 } from '@framework/Component/TabControlBtn/tabControlBtn.component';
 import { UploadImgComponent } from '@framework/Component/UploadImg/uploadImg.component';
-import { LoginPageComponent } from './login/login.page';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { LoadingService } from '@framework/Component/Loading/loading.component';
-import { SearchService } from '@framework/Component/Search/search.component';
-import { SearchComponent } from '@framework/Component/Search/search.component';
-import { AppComponent } from './app.component';
-import { SettingsModule } from './index/index.route';
+import { SearchService, SearchComponent } from '@framework/Component/Search/search.component';
 import { CommHeaderComponent } from '@framework/Component/Header/header.component';
 import { WeatherComponent } from '@framework/Component/Weather/weather.component';
 import { TimeComponent } from '@framework/Component/Timer/time.component';
-import { ROUNTES } from './app.routes';
-import { RouterModule, Routes } from '@angular/router';
+
+// Other
+import { SettingsModule } from './index/index.route';
 import { Handler } from '@framework/Utils/Handler';
+
+
+
+@Component({
+  selector: 'app-root',
+  template: '<router-outlet></router-outlet>'
+})
+export class AppComponent {}
 
 @NgModule({
   declarations: [
@@ -32,13 +43,28 @@ import { Handler } from '@framework/Utils/Handler';
     PageCloseOrBackComponent,
     UploadImgComponent,
     LoginPageComponent,
+    
   ],
   imports: [
+    RouterModule.forRoot([
+      {
+        path: 'index', loadChildren: '../app/index/index.route#SettingsModule'
+      },
+      {
+        path: 'login', component: LoginPageComponent
+      },
+      {
+        path: '**', redirectTo: '/index', pathMatch: 'full'
+      },
+      {
+        path: '', redirectTo: '/index', pathMatch: 'full'
+      }
+    ]),
+
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUNTES),
     BrowserAnimationsModule,
     SettingsModule
   ],

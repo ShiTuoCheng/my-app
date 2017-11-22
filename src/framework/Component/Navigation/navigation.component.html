@@ -1,4 +1,4 @@
-<nav class="c-nav" [ngClass]="{ 'c-nav-mini': miniMode }" [@miniMode]="miniMode">
+<nav class="c-nav" [ngClass]="{ 'c-nav-mini': miniMode }" [@miniMode]="miniMode" g-scroll>
     <ul class="c-nav_main">
         <li class="c-nav_item" *ngFor="let m of nav; i as index" (click)="navSlide(m);" [ngClass]="{'active':activeNav === m}">
             <div class="c-nav_wrap">

@@ -82,3 +82,19 @@
         &:after, &:before { background-color: #fff; }
     }
 }
+    // 灰箭头基类
+    .i-gArrow(@X) {
+        width: 10px;
+        height: 17px;
+        .inline-block;
+        vertical-align: middle;
+        .bp(S; @X -615px);
+    }
+// 左灰箭头
+.i-gArrow-left {
+    .i-gArrow(-40px);
+}
+// 右灰箭头
+.i-gArrow-right {
+    .i-gArrow(-62px);
+}
